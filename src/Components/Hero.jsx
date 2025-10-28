@@ -11,17 +11,17 @@ export default function Hero({ movieData }) {
                 <div id="item1" className="carousel-item w-full">
                     <img
                         src={allData[0].horizontal_poster}
-                        className="w-full h-[300px] lg:h-[800px] object-cover " />
+                        className="w-full h-[250px] lg:h-[800px] object-cover " />
                 </div>
                 <div id="item2" className="carousel-item w-full">
                     <img
                         src={allData[1].horizontal_poster}
-                        className="w-full h-[300px] lg:h-[800px] object-cover " />
+                        className="w-full h-[250px] lg:h-[800px] object-cover " />
                 </div>
                 <div id="item3" className="carousel-item w-full">
                     <img
                         src={allData[2].horizontal_poster}
-                        className="w-full h-[300px] lg:h-[800px] object-cover " />
+                        className="w-full h-[250px] lg:h-[800px] object-cover " />
                 </div>
 
             </div>

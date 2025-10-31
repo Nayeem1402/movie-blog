@@ -1,26 +1,30 @@
- import React, { use } from "react";
- 
+import React, { use } from "react";
+import { Grid } from "swiper/modules";
+import './../index.css';
 
 export default function MovieCard({ movieDatas }) {
   const cardData = use(movieDatas);
- 
+
+  // State to store selected movie
+  const [selectedMovie, setSelectedMovie] = React.useState(null);
 
   const handleClick = (movie) => {
-    console.log(movie.id);
-    
+    setSelectedMovie(movie);
+    document.getElementById("movie_modal").checked = true;
   };
 
   return (
     <>
+      {/* Movie Cards */}
       {cardData.map((movie) => (
         <div
           key={movie.id}
           className="w-full relative h-80 flex justify-center p-2 my-6 cursor-pointer"
           onClick={() => handleClick(movie)}
         >
-          <div className="transform h-64  w-80 hover:text-red-600 transition duration-500 hover:scale-125 flex justify-center items-center flex-col">
+          <div className="transform h-64 w-80 hover:text-red-600 transition duration-500 hover:scale-105 flex justify-center items-center flex-col">
             <img
-              className=" h-[250px] lg:h-[300px] w-[230px]"
+              className="h-[250px] lg:h-[300px] w-[230px]"
               src={movie.vertical_poster}
               alt={movie.title}
             />
@@ -28,6 +32,73 @@ export default function MovieCard({ movieDatas }) {
           </div>
         </div>
       ))}
+
+      {/* Modal */}
+      <input type="checkbox" id="movie_modal" className="modal-toggle" />
+      <div className="modal overflow-y-auto my-auto">
+        <div className="modal-box relative w-11/12 md:w-10/12 lg:w-7/12 max-w-[90vw] max-h-[70vh] flex flex-col">
+          {/* Close Button */}
+          <label
+            htmlFor="movie_modal"
+            className="btn absolute bottom-2 right-2 lg:right-12 px-3 py-2 rounded-full bg-red-600 text-white hover:bg-red-700 cursor-pointer z-10"
+          >
+            Close
+          </label>
+
+          {/* Modal Content */}
+          <div className="overflow-y-auto pr-2 modal-container">
+            {selectedMovie ? (
+              <>
+                 
+                  <div className=" modal-img">
+                    <img
+                      className="w-full  h-[200px] lg:h-[350px] object-cover my-4 rounded "
+                      src={selectedMovie.horizontal_poster}
+                      alt={selectedMovie.movie_name}
+                    />
+                  </div>
+
+
+                  <h3 className="text-2xl lg:mt- font-bold text-start modal-name">{selectedMovie.movie_name}</h3>
+
+              
+
+
+            
+                  <div className="btn-container">
+                    <button className="btn modal-button1  bg-white text-red-600 rounded-3xl font-bold w-[150px] hover:bg-red-600 hover:text-white">
+                    <a target="blank" href={selectedMovie.movie_link}>Watch Movie</a>
+                  </button>
+                  <button className="btn modal-button2  bg-white text-red-600 rounded-3xl w-[150px] font-bold  hover:bg-red-600 hover:text-white">
+                    <a target="blank" href={selectedMovie.trailer_link}>Watch Trailer</a>
+                  </button>
+                  </div>
+            
+                <div className="modal-details">
+
+                  <p className="text-gray-400"><span className="font-semibold text-white">Category:</span> {selectedMovie.category}</p>
+                  <p className="text-gray-400"><span className="font-semibold text-white">Release Year:</span> {selectedMovie.release_year}</p>
+                  <p className="text-gray-400"><span className="font-semibold text-white">IMDB Rating:</span> {selectedMovie.rating}</p>
+                  <p className="text-gray-400"><span className="font-semibold text-white">Actor:</span> {selectedMovie.actor_name}</p>
+                  <p className="text-gray-400"><span className="font-semibold text-white">Actress:</span> {selectedMovie.actress_name}</p>
+
+                </div>
+
+
+
+                <p className="py-2 modal-dis text-gray-400">
+                  <span className="font-semibold text-white">Description:</span> <br />
+                  {selectedMovie.description || "No description available."}
+                </p>
+                <br />
+
+              </>
+            ) : (
+              <p>Loading...</p>
+            )}
+          </div>
+        </div>
+      </div>
     </>
   );
 }

@@ -1,6 +1,18 @@
 @import "tailwindcss";
 @plugin "daisyui";
 
-*{
+body{
     background: #1c1c1c;
+    
+}
+
+
+/* Make active bullet red */
+.swiper-pagination-bullet-active {
+  background-color: red !important;
+}
+
+/* Optional: make all bullets slightly visible (gray) */
+.swiper-pagination-bullet {
+  background-color: rgb(230, 18, 18);
 }

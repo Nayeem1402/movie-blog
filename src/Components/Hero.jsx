@@ -1,37 +1,47 @@
-import React, { use } from 'react'
+ import React from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay, Pagination } from "swiper/modules";
 
-export default function Hero({ movieData }) {
-    const allData = use(movieData);
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/pagination";
 
+// ✅ Import local images
+import img1 from "./../assets/Images/EN_SQdGame_Main_PlayGround_Horizontal_RGB_PRE.jpg";
+import img2 from "./../assets/Images/action-movie-3840-x-2160-wallpaper-4zy74vxvayski2ee.jpg";
+import img3 from "./../assets/Images/mission-impossible-3840x2160-11684.jpg";
+import img4 from "./../assets/Images/1267903-widescreen-movie-poster-wallpaper-1920x1080-smartphone.jpg";
+import { js } from '@eslint/js';
 
-    return (
-        <div>
- 
-            <div className="carousel mt-17 ">
-                <div id="item1" className="carousel-item w-full">
-                    <img
-                        src={allData[0].horizontal_poster}
-                        className="w-full h-[250px] lg:h-[800px] object-cover " />
-                </div>
-                <div id="item2" className="carousel-item w-full">
-                    <img
-                        src={allData[1].horizontal_poster}
-                        className="w-full h-[250px] lg:h-[800px] object-cover " />
-                </div>
-                <div id="item3" className="carousel-item w-full">
-                    <img
-                        src={allData[2].horizontal_poster}
-                        className="w-full h-[250px] lg:h-[800px] object-cover " />
-                </div>
+export default function Hero() {
+  // Image array
+  const slides = [img1, img2, img3, img4];
 
-            </div>
-            <div className="flex w-full justify-center gap-2 py-2">
-                <a href="#item1" className="btn btn-xs">1</a>
-                <a href="#item2" className="btn btn-xs">2</a>
-                <a href="#item3" className="btn btn-xs">3</a>
-                 
-            </div>
+  return (
+    <div className="w-full h-2/3 lg:h-[700px] relative">
+      <Swiper
+        modules={[Pagination, Autoplay]}
+        pagination={{ clickable: true }}
+        autoplay={{
+          delay: 3000, // change every 3 seconds
+          disableOnInteraction: false,
+        }}
+        spaceBetween={30}
+        className="mySwiper"
+      >
+        {slides.map((image, index) => (
+          <SwiperSlide key={index}>
+            <img
+              src={image}
+              alt={`Slide ${index + 1}`}
+              className="w-full h-2/3 lg:h-[700px] object-cover rounded-xl"
+            />
+          </SwiperSlide>
+        ))}
+      </Swiper>
 
-        </div>
-    )
+      {/* Optional: dark overlay for better visibility */}
+      <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+    </div>
+  );
 }

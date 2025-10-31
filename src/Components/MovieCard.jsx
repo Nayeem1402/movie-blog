@@ -15,12 +15,12 @@ export default function MovieCard({ movieDatas }) {
       {cardData.map((movie) => (
         <div
           key={movie.id}
-          className="w-full relative h-80 flex flex-row p-2 my-6 cursor-pointer"
+          className="w-full relative h-80 flex justify-center p-2 my-6 cursor-pointer"
           onClick={() => handleClick(movie)}
         >
-          <div className="transform h-64 bg-indigo-400 w-80 hover:text-red-600 transition duration-500 hover:scale-125 flex justify-center items-center flex-col">
+          <div className="transform h-64  w-80 hover:text-red-600 transition duration-500 hover:scale-125 flex justify-center items-center flex-col">
             <img
-              className="min-h-[300px] w-[230px]"
+              className=" h-[250px] lg:h-[300px] w-[230px]"
               src={movie.vertical_poster}
               alt={movie.title}
             />

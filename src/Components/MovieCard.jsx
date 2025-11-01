@@ -2,6 +2,7 @@ import React, { use } from "react";
 import { Grid } from "swiper/modules";
 import './../index.css';
 
+
 export default function MovieCard({ movieDatas }) {
   const cardData = use(movieDatas);
 
@@ -13,6 +14,7 @@ export default function MovieCard({ movieDatas }) {
     document.getElementById("movie_modal").checked = true;
   };
 
+
   return (
     <>
       {/* Movie Cards */}
@@ -22,13 +24,25 @@ export default function MovieCard({ movieDatas }) {
           className="w-full relative h-80 flex justify-center p-2 my-6 cursor-pointer"
           onClick={() => handleClick(movie)}
         >
-          <div className="transform h-64 w-80 hover:text-red-600 transition duration-500 hover:scale-105 flex justify-center items-center flex-col">
+         <div className="transform h-[270px] w-[260px] hover:text-red-600 transition duration-500 hover:scale-105 justify-center my-4 px-2 items-center flex-col flex">
             <img
-              className="h-[250px] lg:h-[300px] w-[230px]"
+              className="h-[250px] lg:h-[300px] w-[230px]"  
               src={movie.vertical_poster}
               alt={movie.title}
             />
-            <h4 className="text-xl">{movie.movie_name}</h4>
+
+            <div className="mt-4 flex justify-between items-center w-[230px] px-2">
+              <div>
+                <h4 className="text-2xl">{movie.movie_name}</h4>
+                <p className="text-gray-400">{movie.language}</p>
+              </div>
+
+              <div>
+                <p className="text-gray-400 flex rating  items-center">  
+                   {movie.rating}</p>
+                <p className="text-gray-400">{movie.release_year}</p>
+              </div>
+            </div>
           </div>
         </div>
       ))}
@@ -40,7 +54,7 @@ export default function MovieCard({ movieDatas }) {
           {/* Close Button */}
           <label
             htmlFor="movie_modal"
-            className="btn absolute bottom-2 right-2 lg:right-12 px-3 py-2 rounded-full bg-red-600 text-white hover:bg-red-700 cursor-pointer z-10"
+            className="btn absolute top-5 right-9 lg:right-12 px-3 py-2 rounded-full bg-red-600 text-white   cursor-pointer z-10 hover:bg-white hover:text-red-600"
           >
             Close
           </label>
@@ -49,31 +63,31 @@ export default function MovieCard({ movieDatas }) {
           <div className="overflow-y-auto pr-2 modal-container">
             {selectedMovie ? (
               <>
-                 
-                  <div className=" modal-img">
-                    <img
-                      className="w-full  h-[200px] lg:h-[350px] object-cover my-4 rounded "
-                      src={selectedMovie.horizontal_poster}
-                      alt={selectedMovie.movie_name}
-                    />
-                  </div>
+
+                <div className=" modal-img">
+                  <img
+                    className="w-full  h-[200px] lg:h-[350px] object-cover my-4 rounded "
+                    src={selectedMovie.horizontal_poster}
+                    alt={selectedMovie.movie_name}
+                  />
+                </div>
 
 
-                  <h3 className="text-2xl lg:mt- font-bold text-start modal-name">{selectedMovie.movie_name}</h3>
-
-              
+                <h3 className="text-2xl lg:mt-10 font-bold text-start modal-name">{selectedMovie.movie_name}</h3>
 
 
-            
-                  <div className="btn-container">
-                    <button className="btn modal-button1  bg-white text-red-600 rounded-3xl font-bold w-[150px] hover:bg-red-600 hover:text-white">
+
+
+
+                <div className="btn-container">
+                  <button className="btn modal-button1  bg-white text-red-600 rounded-3xl font-bold w-[150px] hover:bg-red-600 hover:text-white">
                     <a target="blank" href={selectedMovie.movie_link}>Watch Movie</a>
                   </button>
                   <button className="btn modal-button2  bg-white text-red-600 rounded-3xl w-[150px] font-bold  hover:bg-red-600 hover:text-white">
                     <a target="blank" href={selectedMovie.trailer_link}>Watch Trailer</a>
                   </button>
-                  </div>
-            
+                </div>
+
                 <div className="modal-details">
 
                   <p className="text-gray-400"><span className="font-semibold text-white">Category:</span> {selectedMovie.category}</p>

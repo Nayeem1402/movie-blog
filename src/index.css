@@ -1,6 +1,6 @@
 @import "tailwindcss";
 @plugin "daisyui";
-
+@import url('https://fonts.googleapis.com/css2?family=Griffy&display=swap');
 body{
     background: #1c1c1c;
     
@@ -67,7 +67,7 @@ body{
       "images images details"
       
       "description description description";
-    gap: 25px;;
+    gap: 25px;
   }
 
   .btn-container {
@@ -152,3 +152,7 @@ body{
     grid-area: description;
   }
 }
+
+
+
+ 

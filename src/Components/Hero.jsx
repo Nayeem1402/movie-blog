@@ -18,7 +18,7 @@ export default function Hero() {
   const slides = [img1, img2, img3, img4];
 
   return (
-    <div className="w-full h-2/3 lg:h-[700px] relative">
+    <div className="w-full h-2/3 relative">
       <Swiper
         modules={[Pagination, Autoplay]}
         pagination={{ clickable: true }}
@@ -41,7 +41,7 @@ export default function Hero() {
       </Swiper>
 
       {/* Optional: dark overlay for better visibility */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+      <div className="absolute inset-0  from-black/50 to-transparent"></div>
     </div>
   );
 }

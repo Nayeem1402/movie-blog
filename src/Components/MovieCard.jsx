@@ -38,6 +38,8 @@ export default function MovieCard({ movieDatas }) {
               </div>
 
               <div>
+                {/* <img src= './../assets/Images/icons8-star-48.png'/> */}
+                
                 <p className="text-gray-400 flex rating  items-center">  
                    {movie.rating}</p>
                 <p className="text-gray-400">{movie.release_year}</p>
